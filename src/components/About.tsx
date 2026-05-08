@@ -32,7 +32,7 @@ export default function About() {
           className="w-full"
         >
           <img 
-            src="/data/Image/about.svg" 
+            src="./data/Image/about.svg" 
             className="w-full grayscale hover:grayscale-0 transition-all duration-500 rounded-lg shadow-lg" 
             alt="Dhiraj Patel" 
             referrerPolicy="no-referrer"

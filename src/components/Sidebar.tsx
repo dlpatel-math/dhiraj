@@ -38,7 +38,7 @@ export default function Sidebar({
       <div className="flex flex-col items-center">
         <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-8 border-white/5 mb-4 group">
           <img 
-            src="/data/Image/profile.svg" 
+            src="./data/Image/profile.svg" 
             alt="Dhiraj Patel" 
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
             referrerPolicy="no-referrer"

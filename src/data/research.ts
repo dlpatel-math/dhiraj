@@ -17,7 +17,7 @@ export const publications: Publication[] = [
     journal: "arXiv preprint",
     year: 2025,
     category: "preprint",
-    link: "/data/Document/galois_representations_2025.pdf"
+    link: "./data/Document/galois_representations_2025.pdf"
   },
   { 
     id: 1, 
@@ -26,7 +26,7 @@ export const publications: Publication[] = [
     journal: "Journal of Number Theory",
     year: 2024,
     category: "journal",
-    link: "/data/Document/l_functions_genus3.pdf"
+    link: "./data/Document/l_functions_genus3.pdf"
   },
   { 
     id: 2, 
@@ -35,7 +35,7 @@ export const publications: Publication[] = [
     journal: "Journal of High Energy Physics",
     year: 2023,
     category: "journal",
-    link: "/data/Document/modular_forms_string_theory.pdf"
+    link: "./data/Document/modular_forms_string_theory.pdf"
   },
   { 
     id: 6, 
@@ -44,7 +44,7 @@ export const publications: Publication[] = [
     journal: "Acta Arithmetica",
     year: 2023,
     category: "journal",
-    link: "/data/Document/diophantine_solutions.pdf"
+    link: "./data/Document/diophantine_solutions.pdf"
   },
   { 
     id: 4, 
@@ -53,7 +53,7 @@ export const publications: Publication[] = [
     journal: "Proceedings of the ISSAC",
     year: 2022,
     category: "conference",
-    link: "/data/Document/comp_group_theory_issac.pdf"
+    link: "./data/Document/comp_group_theory_issac.pdf"
   },
   { 
     id: 5, 
@@ -62,6 +62,6 @@ export const publications: Publication[] = [
     journal: "Mathematische Annalen",
     year: 2021,
     category: "journal",
-    link: "/data/Document/billiard_flows_riemann.pdf"
+    link: "./data/Document/billiard_flows_riemann.pdf"
   },
 ];

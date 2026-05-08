@@ -35,7 +35,7 @@ export default function Home() {
       {/* Background with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ backgroundImage: 'url("/data/Image/hero-bg.svg")' }}
+        style={{ backgroundImage: 'url("./data/Image/hero-bg.svg")' }}
       >
         <div className="absolute inset-0 bg-black/50" />
       </div>

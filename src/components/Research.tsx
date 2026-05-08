@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useMemo } from 'react';
 import { ExternalLink, FileText, Calendar, BookOpen } from 'lucide-react';
 import { publications, type Publication } from '../data/research';
+import CollaborationNetwork from './CollaborationNetwork';
 
 const categories = [
   { id: 'all', label: 'All Publications' },
@@ -131,6 +132,16 @@ export default function Research() {
             No publications found in this category.
           </div>
         )}
+      </div>
+
+      <div className="mt-20 max-w-5xl mx-auto">
+        <div className="section-title mb-8">
+          <h3 className="text-2xl font-bold text-brand-primary text-center">Collaboration Network</h3>
+          <p className="text-sm text-[#777] text-center mt-2">
+            Visualizing the research connections and patterns of collaboration across different projects.
+          </p>
+        </div>
+        <CollaborationNetwork />
       </div>
     </section>
   );
