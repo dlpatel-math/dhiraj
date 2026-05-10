@@ -11,57 +11,55 @@ export interface Publication {
 
 export const publications: Publication[] = [
   { 
-    id: 3, 
-    title: "On the weights of Galois representations attached to Hilbert modular forms", 
-    authors: "D. Patel, M. Müller",
-    journal: "arXiv preprint",
-    year: 2025,
-    category: "preprint",
-    link: "./data/Document/galois_representations_2025.pdf"
-  },
-  { 
     id: 1, 
-    title: "Explicit computation of L-functions for hyperelliptic curves of genus 3", 
-    authors: "D. Patel, A. Smith, J. Doe",
-    journal: "Journal of Number Theory",
-    year: 2024,
+    title: "Sampling and reconstruction of signals in shift-invariant spaces: Revisit through reproducing kernel Hilbert spaces", 
+    authors: "D. Patel, S. Sampath",
+    journal: "Signal Processing",
+    year: 2021,
     category: "journal",
-    link: "./data/Document/l_functions_genus3.pdf"
+    link: "https://doi.org/10.1016/j.sigpro.2021.108034"
   },
   { 
     id: 2, 
-    title: "Modular forms and their applications in string theory", 
-    authors: "D. Patel",
-    journal: "Journal of High Energy Physics",
-    year: 2023,
+    title: "Generalized prolate spheroidal wave functions in reproducing kernel Hilbert spaces", 
+    authors: "D. Patel, S. Sampath",
+    journal: "Numerical Algorithms",
+    year: 2020,
     category: "journal",
-    link: "./data/Document/modular_forms_string_theory.pdf"
+    link: "https://doi.org/10.1007/s11075-019-00787-1"
   },
   { 
-    id: 6, 
-    title: "Solutions to certain classes of Diophantine equations via elliptic curves", 
-    authors: "D. Patel, K. Lee",
-    journal: "Acta Arithmetica",
-    year: 2023,
+    id: 3, 
+    title: "Optimal sampling for signal reconstruction in reproducing kernel Hilbert spaces", 
+    authors: "D. Patel, S. Sampath",
+    journal: "Journal of Mathematical Analysis and Applications",
+    year: 2019,
     category: "journal",
-    link: "./data/Document/diophantine_solutions.pdf"
+    link: "https://doi.org/10.1016/j.jmaa.2019.04.053"
   },
   { 
     id: 4, 
-    title: "A comparative study of computational group theory algorithms", 
-    authors: "R. Garcia, D. Patel",
-    journal: "Proceedings of the ISSAC",
-    year: 2022,
-    category: "conference",
-    link: "./data/Document/comp_group_theory_issac.pdf"
+    title: "Sampling and reconstruction of signals in Sobolev spaces of fractional order", 
+    authors: "D. Patel, S. Sampath",
+    journal: "Sampling Theory in Signal and Image Processing",
+    year: 2018,
+    category: "journal",
   },
   { 
     id: 5, 
-    title: "Dynamics of billiard flows on Riemann surfaces", 
-    authors: "D. Patel",
-    journal: "Mathematische Annalen",
-    year: 2021,
+    title: "Stability and error analysis for sampling in shift-invariant spaces", 
+    authors: "D. Patel, S. Sampath",
+    journal: "Journal of Applied Mathematics and Computing",
+    year: 2022,
     category: "journal",
-    link: "./data/Document/billiard_flows_riemann.pdf"
+    link: "https://doi.org/10.1007/s12190-021-01640-w"
   },
+  { 
+    id: 6, 
+    title: "Graph Signal Processing in the context of Complex Networks", 
+    authors: "D. Patel, M. T. Schaub",
+    journal: "In Preparation",
+    year: 2024,
+    category: "preprint",
+  }
 ];

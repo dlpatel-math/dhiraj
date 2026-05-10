@@ -67,6 +67,12 @@ export default function CollaborationNetwork() {
       // Zoom behavior
       const zoom = d3.zoom<SVGSVGElement, unknown>()
         .scaleExtent([0.5, 3])
+        .filter(event => {
+          // Disable scroll wheel zoom unless Ctrl is pressed
+          // This prevents the visualization from intercepting page scroll
+          if (event.type === 'wheel') return event.ctrlKey;
+          return !event.ctrlKey && !event.button;
+        })
         .on('zoom', (event) => {
           g.attr('transform', event.transform);
         });
@@ -85,7 +91,7 @@ export default function CollaborationNetwork() {
         .selectAll('line')
         .data(graphData.links)
         .join('line')
-        .attr('stroke-width', d => Math.sqrt(d.value) * 3);
+        .attr('stroke-width', d => Math.sqrt((d as Link).value) * 3);
 
       const nodeGroup = g.append('g')
         .selectAll('g')
@@ -97,29 +103,29 @@ export default function CollaborationNetwork() {
           .on('end', dragended) as any);
 
       nodeGroup.append('circle')
-        .attr('r', d => d.isMain ? 15 : 8 + (d.count * 2))
-        .attr('fill', d => d.isMain ? '#0563bb' : '#45e1d1')
+        .attr('r', d => (d as Node).isMain ? 15 : 8 + ((d as Node).count * 2))
+        .attr('fill', d => (d as Node).isMain ? '#0563bb' : '#45e1d1')
         .attr('stroke', '#fff')
         .attr('stroke-width', 2)
         .attr('box-shadow', '0 4px 6px -1px rgb(0 0 0 / 0.1)');
 
       nodeGroup.append('text')
-        .attr('dy', d => d.isMain ? 30 : 20)
+        .attr('dy', d => (d as Node).isMain ? 30 : 20)
         .attr('text-anchor', 'middle')
-        .text(d => d.id)
-        .attr('font-size', d => d.isMain ? '14px' : '10px')
-        .attr('font-weight', d => d.isMain ? 'bold' : 'normal')
+        .text(d => (d as Node).id)
+        .attr('font-size', d => (d as Node).isMain ? '14px' : '10px')
+        .attr('font-weight', d => (d as Node).isMain ? 'bold' : 'normal')
         .attr('fill', '#272829');
 
       simulation.on('tick', () => {
         link
-          .attr('x1', d => (d.source as any).x)
-          .attr('y1', d => (d.source as any).y)
-          .attr('x2', d => (d.target as any).x)
-          .attr('y2', d => (d.target as any).y);
+          .attr('x1', (d: any) => d.source.x)
+          .attr('y1', (d: any) => d.source.y)
+          .attr('x2', (d: any) => d.target.x)
+          .attr('y2', (d: any) => d.target.y);
 
         nodeGroup
-          .attr('transform', d => `translate(${d.x},${d.y})`);
+          .attr('transform', (d: any) => `translate(${d.x},${d.y})`);
       });
 
       function dragstarted(event: any) {
@@ -150,13 +156,27 @@ export default function CollaborationNetwork() {
     return () => resizeObserver.disconnect();
   }, [graphData]);
 
+  const resetZoom = () => {
+    if (!svgRef.current) return;
+    const svg = d3.select(svgRef.current);
+    const zoom = d3.zoom<SVGSVGElement, unknown>();
+    svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+  };
+
   return (
-    <div className="w-full bg-white/50 backdrop-blur-sm rounded-2xl border border-black/5 p-4 overflow-hidden relative" ref={containerRef}>
-      <div className="absolute top-4 left-4 z-10">
+    <div className="w-full bg-white rounded-2xl border border-black/5 p-4 overflow-hidden relative shadow-inner" ref={containerRef}>
+      <div className="absolute top-4 left-4 z-10 bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-black/5">
         <h4 className="text-sm font-bold text-brand-primary">Co-authorship Network</h4>
-        <p className="text-[10px] text-[#777]">Interactive collaboration structure</p>
+        <p className="text-[10px] text-[#777] mt-0.5">Drag to move • Press Ctrl + Scroll to zoom</p>
       </div>
-      <svg ref={svgRef} className="w-full h-[500px] cursor-grab active:cursor-grabbing" />
+      <button 
+        onClick={resetZoom}
+        className="absolute bottom-4 left-4 z-10 px-3 py-1.5 bg-white border border-black/10 rounded-md text-[10px] font-bold text-brand-primary hover:bg-slate-50 shadow-sm transition-all flex items-center gap-1.5"
+      >
+        <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+        Reset View
+      </button>
+      <svg ref={svgRef} className="w-full h-[500px] cursor-grab active:cursor-grabbing bg-[#fcfcfc]" />
       <div className="absolute bottom-4 right-4 text-[10px] text-[#999] flex gap-4">
         <div className="flex items-center gap-1">
           <span className="w-2 h-2 rounded-full bg-[#0563bb]" />

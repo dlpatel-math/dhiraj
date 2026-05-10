@@ -1,10 +1,13 @@
 import { motion } from 'motion/react';
-import { ChevronRight, Briefcase, Users, Mic, Award } from 'lucide-react';
+import { ChevronRight, Briefcase, Users, GraduationCap } from 'lucide-react';
 import { publications } from '../data/research';
+import { teachingHistory } from '../data/teaching';
+import { profile } from '../data/profile';
 
 export default function About() {
-  // Calculate stats from publications data
+  // Calculate stats from data
   const publicationCount = publications.length;
+  const coursesCount = teachingHistory.length;
   
   const allCollaborators = publications.reduce((acc: string[], pub) => {
     const authors = pub.authors.split(', ').map(a => a.trim());
@@ -12,7 +15,7 @@ export default function About() {
   }, []);
   
   const uniqueCollaborators = new Set(
-    allCollaborators.filter(author => author !== 'D. Patel')
+    allCollaborators.filter(author => author !== 'D. Patel' && author !== 'Dhiraj Patel')
   ).size;
 
   return (
@@ -20,22 +23,25 @@ export default function About() {
       <div className="section-title">
         <h2>About</h2>
         <p className="text-[#4b4949]">
-          I am a Postdoctoral Researcher in Mathematics with a deep interest in Algebraic Geometry and Number Theory. My work focuses on exploring the intersections between arithmetic properties and geometric structures, contributing to both theoretical frameworks and computational applications.
+          {profile.bio}
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[30%_1fr] gap-8 mt-8">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="w-full"
+           initial={{ opacity: 0, x: -20 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true }}
+           className="w-full"
         >
           <img 
-            src="./data/Image/about.svg" 
-            className="w-full grayscale hover:grayscale-0 transition-all duration-500 rounded-lg shadow-lg" 
-            alt="Dhiraj Patel" 
+            src={profile.profileImage} 
+            className="w-full grayscale hover:grayscale-0 transition-all duration-500 rounded-lg shadow-lg aspect-square object-cover" 
+            alt={profile.fullName} 
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop";
+            }}
           />
         </motion.div>
         
@@ -44,39 +50,38 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-brand-primary mb-2">Mathematician & Researcher.</h3>
+          <h3 className="text-2xl font-bold text-brand-primary mb-2">Mathematical Sampling & Network Scientist.</h3>
           <p className="italic mb-6 text-[#4b4949]">
-            Dedicated to advancing mathematical knowledge through rigorous research and inspiring the next generation of scholars through innovative teaching.
+            {profile.tagline}
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 mb-8">
             <ul className="space-y-4">
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Research Area:</strong> <span>Algebraic Geometry</span></li>
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Current Position:</strong> <span>Postdoctoral Researcher</span></li>
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>PhD:</strong> <span>Aachen University (2023)</span></li>
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>City:</strong> <span>Aachen, Germany</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Research Area:</strong> <span>Network Science & Sampling</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Current Position:</strong> <span>{profile.currentPosition.title}</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>PhD:</strong> <span>IIT Delhi (2021)</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>City:</strong> <span>{profile.location}</span></li>
             </ul>
             <ul className="space-y-4">
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Phone:</strong> <span>+49 123 456 7890</span></li>
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Website:</strong> <span>www.math-patel.com</span></li>
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Email:</strong> <span>dpatel@university.edu</span></li>
-              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Status:</strong> <span>On Job Market</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Research Group:</strong> <a href={profile.currentPosition.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent">{profile.currentPosition.group}, RWTH</a></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Previous Inst:</strong> <span>IIT Delhi</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Email:</strong> <span>{profile.email}</span></li>
+              <li className="flex items-center gap-2 text-sm"><ChevronRight className="text-brand-accent" size={16} /> <strong>Availability:</strong> <span>Collaborations Welcome</span></li>
             </ul>
           </div>
           
           <p className="text-[#4b4949]">
-            My academic journey is driven by a passion for uncovering the underlying structures of mathematical objects. I am committed to open research and the effective communication of complex ideas, aiming to bridge the gap between abstract theory and tangible understanding.
+            {profile.detailedBio}
           </p>
         </motion.div>
       </div>
 
       {/* Facts Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24">
+      <div className="flex justify-center flex-wrap gap-12 md:gap-24 mt-24">
         {[
           { icon: Briefcase, count: publicationCount, label: "Publications" },
           { icon: Users, count: uniqueCollaborators, label: "Collaborators" },
-          { icon: Mic, count: 18, label: "Invited Talks" },
-          { icon: Award, count: 5, label: "Grants & Fellowships" },
+          { icon: GraduationCap, count: coursesCount, label: "Courses Taught" },
         ].map((fact, i) => (
           <div key={i} className="flex flex-col items-center">
             <div className="w-12 h-12 rounded-full bg-brand-accent flex items-center justify-center text-white mb-4">
@@ -90,3 +95,4 @@ export default function About() {
     </section>
   );
 }
+

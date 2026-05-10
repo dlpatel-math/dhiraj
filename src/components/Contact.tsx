@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import { profile } from '../data/profile';
 
 export default function Contact() {
   return (
@@ -19,7 +20,10 @@ export default function Contact() {
             </div>
             <div>
               <h4 className="text-xl font-bold text-brand-primary mb-1">Office:</h4>
-              <p className="text-sm text-[#4b4949]">Institute of Mathematics, RWTH Aachen, Germany</p>
+              <p className="text-sm text-[#4b4949] leading-relaxed">
+                {profile.address}<br />
+                {profile.office}
+              </p>
             </div>
           </div>
 
@@ -29,7 +33,7 @@ export default function Contact() {
             </div>
             <div>
               <h4 className="text-xl font-bold text-brand-primary mb-1">Email:</h4>
-              <p className="text-sm text-[#4b4949]">dpatel@rwth-aachen.de</p>
+              <p className="text-sm text-[#4b4949]">{profile.email}</p>
             </div>
           </div>
 
@@ -39,15 +43,16 @@ export default function Contact() {
             </div>
             <div>
               <h4 className="text-xl font-bold text-brand-primary mb-1">Call:</h4>
-              <p className="text-sm text-[#4b4949]">+49 123 456 7890</p>
+              <p className="text-sm text-[#4b4949]">{profile.phone} (Group Office)</p>
             </div>
           </div>
           
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2522.9995!2d6.0617!3d50.778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0997f6c34277b%3A0x28042407519ba5e!2sAhornstra%C3%9Fe%2055%2C%2052074%20Aachen%2C%20Germany!5e0!3m2!1sen!2sde!4v1700000000000!5m2!1sen!2sde" 
             frameBorder="0" 
             style={{ border: 0, width: '100%', height: '290px' }} 
             allowFullScreen 
+            title="Office Location Map"
           />
         </div>
 

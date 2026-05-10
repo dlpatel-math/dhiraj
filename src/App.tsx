@@ -7,7 +7,8 @@ import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
 import About from './components/About';
-import Skills from './components/Skills';
+import Teaching from './components/Teaching';
+import Mentorship from './components/Mentorship';
 import Resume from './components/Resume';
 import Research from './components/Research';
 import Contact from './components/Contact';
@@ -16,7 +17,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const sections = ['home', 'about', 'research', 'resume', 'skills', 'contact'];
+    const sections = ['home', 'about', 'research', 'teaching', 'mentorship', 'resume', 'contact'];
     
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,10 +56,10 @@ export default function App() {
         <Home />
         <About />
         <Research />
+        <Teaching />
+        <Mentorship />
         <Resume />
-        <Skills />
         <Contact />
-        
       </main>
     </div>
   );

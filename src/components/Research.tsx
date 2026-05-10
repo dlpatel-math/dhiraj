@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useMemo } from 'react';
-import { ExternalLink, FileText, Calendar, BookOpen } from 'lucide-react';
+import { ExternalLink, FileText, Calendar, BookOpen, Network, ChevronDown, ChevronUp } from 'lucide-react';
 import { publications, type Publication } from '../data/research';
 import CollaborationNetwork from './CollaborationNetwork';
 
@@ -13,6 +13,7 @@ const categories = [
 
 export default function Research() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [showNetwork, setShowNetwork] = useState(false);
 
   const sortedAndFilteredPublications = useMemo(() => {
     // First, sort by year descending (latest first)
@@ -32,19 +33,57 @@ export default function Research() {
         </p>
       </div>
 
-      <div className="flex justify-center mb-12">
-        <div className="flex flex-wrap gap-2 md:gap-4 bg-white/50 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border border-black/5">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveFilter(cat.id)}
-              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${activeFilter === cat.id ? 'bg-brand-accent text-white shadow-md' : 'text-[#272829] hover:bg-black/5'}`}
-            >
-              {cat.label}
-            </button>
-          ))}
+      <div className="flex flex-col items-center mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 bg-white/50 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border border-black/5">
+          <div className="flex gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setActiveFilter(cat.id);
+                  setShowNetwork(false);
+                }}
+                className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${activeFilter === cat.id && !showNetwork ? 'bg-brand-accent text-white shadow-md' : 'text-[#272829] hover:bg-black/5'}`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+          
+          <div className="hidden md:block w-px h-6 bg-black/10 mx-1" />
+
+          <button
+            onClick={() => setShowNetwork(!showNetwork)}
+            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${showNetwork ? 'bg-brand-primary text-white shadow-md' : 'text-[#272829] hover:bg-black/5'}`}
+          >
+            <Network size={16} />
+            <span>Co-authorship</span>
+            {showNetwork ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showNetwork && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: 'auto' }}
+            exit={{ opacity: 0, y: -20, height: 0 }}
+            className="mb-12 overflow-hidden max-w-5xl mx-auto"
+          >
+            <div className="bg-slate-50 p-4 rounded-2xl border border-black/5">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+                <CollaborationNetwork />
+              </div>
+            </div>
+            <div className="mt-8 mb-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-black/5" />
+              <span className="text-[10px] font-bold text-[#aaa] uppercase tracking-widest">Publications Gallery Below</span>
+              <div className="h-px flex-1 bg-black/5" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="max-w-4xl mx-auto">
         <ol className="space-y-6">
@@ -132,16 +171,6 @@ export default function Research() {
             No publications found in this category.
           </div>
         )}
-      </div>
-
-      <div className="mt-20 max-w-5xl mx-auto">
-        <div className="section-title mb-8">
-          <h3 className="text-2xl font-bold text-brand-primary text-center">Collaboration Network</h3>
-          <p className="text-sm text-[#777] text-center mt-2">
-            Visualizing the research connections and patterns of collaboration across different projects.
-          </p>
-        </div>
-        <CollaborationNetwork />
       </div>
     </section>
   );
