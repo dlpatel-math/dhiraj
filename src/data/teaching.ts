@@ -17,7 +17,7 @@ export const teachingHistory: TeachingCourse[] = [
     institution: "IIT Delhi",
     period: "2016 - 2021",
     description: "Conducted weekly tutorials for undergraduate students (B.Tech), covering differential and integral calculus, Taylor series, and multiple integrals. Evaluated weekly assignments and exam papers.",
-    // materialsUrl: "/data/Document/Teaching/calculus_notes.pdf",
+    materialsUrl: "/data/Document/Teaching/calculus_notes.pdf",
     category: "Undergraduate"
   },
   {

@@ -19,7 +19,7 @@ export const publications: Publication[] = [
     year: 2026,
     category: "journal",
     link: "https://doi.org/10.1007/s13324-026-01204-8",
-    pdfUrl: "/data/Document/Research/majethiya2026.pdf"
+    pdfUrl: "data/Document/Research/majethiya2026.pdf"
   },
   { 
     id: 1, 
@@ -29,7 +29,7 @@ export const publications: Publication[] = [
     year: 2020,
     category: "journal",
     link: "https://doi.org/10.1016/j.jmaa.2020.124270",
-    pdfUrl: "/data/Document/Research/patel2020.pdf"
+    pdfUrl: "data/Document/Research/patel2020.pdf"
   },
   { 
     id: 2, 
@@ -39,7 +39,7 @@ export const publications: Publication[] = [
     year: 2022,
     category: "journal",
     link: "https://doi.org/10.1002/mma.8821",
-    pdfUrl: "/data/Document/Research/patel2022.pdf"
+    pdfUrl: "data/Document/Research/patel2022.pdf"
   },
   { 
     id: 3, 
@@ -49,7 +49,7 @@ export const publications: Publication[] = [
     year: 2023,
     category: "journal",
     link: "https://doi.org/10.1007/s10444-023-10075-7",
-    pdfUrl: "/data/Document/Research/patel2023a.pdf"
+    pdfUrl: "data/Document/Research/patel2023a.pdf"
   },
   { 
     id: 4, 
@@ -59,7 +59,7 @@ export const publications: Publication[] = [
     year: 2023,
     category: "journal",
     link: "https://doi.org/10.1090/proc/16393",
-    pdfUrl: "/data/Document/Research/patel2023b.pdf"
+    pdfUrl: "data/Document/Research/patel2023b.pdf"
   },
   { 
     id: 5, 
@@ -69,7 +69,7 @@ export const publications: Publication[] = [
     year: 2023,
     category: "journal",
     link: "https://doi.org/10.1007/s00025-023-02037-8",
-    pdfUrl: "/data/Document/Research/patel2023c.pdf"
+    pdfUrl: "data/Document/Research/patel2023c.pdf"
   },
   { 
     id: 6, 
@@ -79,7 +79,7 @@ export const publications: Publication[] = [
     year: 2025,
     category: "preprint",
     link: "https://doi.org/10.48550/arXiv.2501.14440",
-    pdfUrl: "/data/Document/Research/patel2025.pdf"
+    pdfUrl: "data/Document/Research/patel2025.pdf"
   },
   { 
     id: 7, 
@@ -89,7 +89,7 @@ export const publications: Publication[] = [
     year: 2019,
     category: "journal",
     link: "https://doi.org/10.1007/s11868-019-00315-0",
-    pdfUrl: "/data/Document/Research/kumar2019.pdf"
+    pdfUrl: "data/Document/Research/kumar2019.pdf"
   },
   { 
     id: 8, 
@@ -99,7 +99,7 @@ export const publications: Publication[] = [
     year: 2024,
     category: "journal",
     link: "https://doi.org/10.1142/S021953052450012X",
-    pdfUrl: "/data/Document/Research/bajpeyi2024a.pdf"
+    pdfUrl: "data/Document/Research/bajpeyi2024a.pdf"
   },
   { 
     id: 9, 
@@ -109,6 +109,6 @@ export const publications: Publication[] = [
     year: 2024,
     category: "journal",
     link: "https://doi.org/10.1080/01630563.2024.2318576",
-    pdfUrl: "/data/Document/Research/bajpeyi2024b.pdf"
+    pdfUrl: "data/Document/Research/bajpeyi2024b.pdf"
   }
 ];
