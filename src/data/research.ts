@@ -6,7 +6,7 @@ export interface Publication {
   year: number;
   category: 'journal' | 'preprint' | 'conference';
   link?: string;
-  pdfUrl?: string;
+  pdfUrl?: string; // Can be a local path (e.g., 'data/file.pdf') or an external link (e.g., 'https://drive.google.com/...')
   abstract?: string;
 }
 

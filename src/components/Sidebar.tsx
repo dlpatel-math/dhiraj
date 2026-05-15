@@ -1,12 +1,12 @@
 import { motion } from 'motion/react';
-import { Network, GraduationCap, Fingerprint, Linkedin, Home, User, FileText, BookOpen, Mail, Users } from 'lucide-react';
+import { Network, GraduationCap, Fingerprint, Linkedin, Home, User, FileText, BookOpen, Mail, Users, Presentation } from 'lucide-react';
 import { profile } from '../data/profile';
 import { students } from '../data/students';
 
 const baseNavItems = [
-  { id: 'home', icon: Home, label: 'Home' },
-  { id: 'about', icon: User, label: 'About' },
+  { id: 'home', icon: User, label: 'Profile' },
   { id: 'research', icon: BookOpen, label: 'Research' },
+  { id: 'conferences', icon: Presentation, label: 'Conferences' },
   { id: 'teaching', icon: GraduationCap, label: 'Teaching' },
 ];
 
@@ -31,18 +31,18 @@ const socialLinks = [
 export default function Sidebar({ 
   activeSection, 
   isOpen, 
-  setIsOpen 
+  setIsOpen,
+  onNavigate
 }: { 
   activeSection: string; 
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
+  onNavigate: (id: string) => void;
 }) {
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
+  const handleNavigate = (id: string) => {
+    onNavigate(id);
+    setIsOpen(false);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
@@ -94,7 +94,7 @@ export default function Sidebar({
             return (
               <li key={item.id}>
                 <button
-                  onClick={() => scrollTo(item.id)}
+                  onClick={() => handleNavigate(item.id)}
                   className={`flex items-center gap-4 py-2 group transition-colors duration-300 w-full text-left ${isActive ? 'text-brand-accent' : 'text-white/60 hover:text-white'}`}
                 >
                   <Icon 
@@ -110,6 +110,12 @@ export default function Sidebar({
           })}
         </ul>
       </nav>
+
+      <div className="mt-auto pt-8 border-t border-white/5">
+        <p className="text-[9px] text-sidebar-bg uppercase tracking-[0.2em] font-medium">
+          &copy; {new Date().getFullYear()} {[68, 104, 105, 114, 97, 106, 32, 80, 97, 116, 101, 108].map(c => String.fromCharCode(c)).join('')}
+        </p>
+      </div>
     </header>
   );
 }

@@ -45,17 +45,14 @@ export default function Research() {
   }, [activeFilter]);
 
   return (
-    <section id="research" className="py-16 px-8 md:px-12 lg:px-24 section-bg min-h-screen">
+    <section id="research" className="py-16 px-8 md:px-12 section-bg min-h-screen">
       <div className="section-title">
         <h2>Research & Publications</h2>
-        <p className="text-[#4b4949]">
-          My research primarily focuses on Arithmetic Geometry and Number Theory. Below is a selection of my published works and current preprints, sorted chronologically.
-        </p>
       </div>
 
-      <div className="flex flex-col items-center mb-12">
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 bg-white/50 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border border-black/5">
-          <div className="flex gap-2">
+      <div className="flex flex-col items-center mb-6">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 bg-white/50 backdrop-blur-sm p-2 rounded-xl shadow-sm border border-black/5 w-full md:w-auto">
+          <div className="flex flex-wrap justify-center gap-2">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -63,7 +60,7 @@ export default function Research() {
                   setActiveFilter(cat.id);
                   setShowNetwork(false);
                 }}
-                className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${activeFilter === cat.id && !showNetwork ? 'bg-brand-accent text-white shadow-md' : 'text-[#272829] hover:bg-black/5'}`}
+                className={`px-3 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${activeFilter === cat.id && !showNetwork ? 'bg-brand-accent text-white shadow-md' : 'text-[#272829] hover:bg-black/5'}`}
               >
                 {cat.label}
               </button>
@@ -89,7 +86,7 @@ export default function Research() {
             initial={{ opacity: 0, y: -20, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -20, height: 0 }}
-            className="mb-12 overflow-hidden max-w-5xl mx-auto"
+            className="mb-12 overflow-hidden w-full"
           >
             <div className="bg-slate-50 p-4 rounded-2xl border border-black/5">
               <div className="bg-white rounded-xl overflow-hidden shadow-sm">
@@ -105,7 +102,7 @@ export default function Research() {
         )}
       </AnimatePresence>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="w-full">
         <ol className="space-y-6">
           <AnimatePresence mode="popLayout">
             {sortedAndFilteredPublications.map((pub, index) => (
@@ -125,8 +122,8 @@ export default function Research() {
                   <div className="w-px h-full bg-black/5 mt-2 hidden group-last:block" />
                 </div>
 
-                <div className="flex-1 pb-4 border-b border-black/5 last:border-0">
-                  <div className="flex items-center gap-2 mb-1">
+                <div className="flex-1 min-w-0 pb-4 border-b border-black/5 last:border-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
                     <span className={`text-[9px] uppercase font-black tracking-widest px-1.5 py-0.5 rounded ${
                       pub.category === 'journal' ? 'bg-blue-100 text-blue-700' : 
                       pub.category === 'preprint' ? 'bg-amber-100 text-amber-700' : 
@@ -140,11 +137,11 @@ export default function Research() {
                     </span>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-brand-primary mb-1 group-hover:text-brand-accent transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-brand-primary mb-1 group-hover:text-brand-accent transition-colors leading-snug break-words">
                     <RenderTitle title={pub.title} />
                   </h3>
                   
-                  <p className="text-sm text-[#4b4949] mb-1">
+                  <p className="text-sm text-[#4b4949] mb-1 break-words">
                     {pub.authors.split(', ').map((author, index) => (
                       <span key={index}>
                         {author === 'D. Patel' ? <strong className="text-brand-primary underline decoration-brand-accent/30 underline-offset-2">D. Patel</strong> : author}

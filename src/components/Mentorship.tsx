@@ -16,22 +16,19 @@ export default function Mentorship() {
   const levels = ['PhD', 'Master', 'Bachelor'];
 
   return (
-    <section id="mentorship" className="py-16 px-8 md:px-12 lg:px-24">
+    <section id="mentorship" className="py-16 px-8 md:px-12">
       <div className="section-title">
         <h2>Mentorship</h2>
-        <p className="text-slate-600">
-          Supervision and mentorship of research students at various academic levels.
-        </p>
       </div>
 
-      <div className="mt-12 space-y-16">
+      <div className="mt-6 space-y-12">
         {levels.map(level => {
           const levelStudents = groupedStudents[level];
           if (!levelStudents || levelStudents.length === 0) return null;
 
           return (
             <div key={level}>
-              <h3 className="text-xl font-bold text-brand-primary border-b border-brand-primary/10 pb-2 mb-8 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-brand-primary border-b border-brand-primary/10 pb-2 mb-4 flex items-center gap-2">
                 <GraduationCap className="text-brand-accent" size={24} />
                 {level === 'PhD' ? 'Doctoral Students' : level === 'Master' ? "Master's Students" : "Bachelor's Students"}
               </h3>
@@ -69,22 +66,22 @@ export default function Mentorship() {
                       </div>
 
                       <div className="space-y-4">
-                        <div className="grid grid-cols-[100px_1fr] gap-2 items-start">
+                        <div className="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 items-start">
                           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Thesis Title</span>
-                          <p className="text-sm text-brand-primary leading-snug">
+                          <p className="text-sm text-brand-primary leading-snug break-words">
                             {student.thesisTitle}
                           </p>
                         </div>
 
                         {student.coAdvisor && (
-                          <div className="grid grid-cols-[100px_1fr] gap-2 items-start">
+                          <div className="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 items-start">
                             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">Co-Advisor</span>
-                            <p className="text-xs text-slate-600">{student.coAdvisor}</p>
+                            <p className="text-xs text-slate-600 break-words">{student.coAdvisor}</p>
                           </div>
                         )}
 
                         {student.description && (
-                          <p className="text-sm text-slate-600 pl-4 border-l-2 border-slate-200 italic">
+                          <p className="text-sm text-slate-600 pl-4 border-l-2 border-slate-200 italic break-words">
                             {student.description}
                           </p>
                         )}

@@ -30,7 +30,7 @@ export default function Home() {
   }, [displayText, isDeleting, roleIndex, typingSpeed]);
 
   return (
-    <section id="home" className="w-full h-screen relative flex flex-col justify-center overflow-hidden">
+    <section id="home" className="w-full h-[60vh] relative flex flex-col justify-center overflow-hidden">
       {/* Background with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
@@ -39,7 +39,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      <div className="relative z-10 px-8 md:px-24">
+      <div className="relative z-10 px-8 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}

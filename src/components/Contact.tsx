@@ -4,15 +4,12 @@ import { profile } from '../data/profile';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 px-8 md:px-12 lg:px-24">
+    <section id="contact" className="py-16 px-8 md:px-12">
       <div className="section-title">
         <h2>Contact</h2>
-        <p className="text-[#4b4949]">
-          For research collaborations, teaching opportunities, or queries regarding my publications, please feel free to reach out through any of the following channels.
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-6">
         <div className="space-y-8">
           <div className="bg-white p-6 shadow-sm border border-gray-100 rounded-lg flex gap-4 items-start group">
             <div className="w-11 h-11 rounded-full bg-[#f0f4f8] text-brand-accent flex items-center justify-center transition-all duration-300">
@@ -33,7 +30,7 @@ export default function Contact() {
             </div>
             <div>
               <h4 className="text-lg font-bold text-[#374151] mb-1">Email Address</h4>
-              <p className="text-[#4b5563]">
+              <p className="text-[#4b5563] break-all">
                 <a href={`mailto:${profile.email}`} className="hover:text-brand-accent transition-colors">
                   {profile.email}
                 </a>
@@ -41,15 +38,19 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="bg-white p-6 shadow-sm border border-gray-100 rounded-lg flex gap-4 items-start group">
-            <div className="w-11 h-11 rounded-full bg-[#f0f4f8] text-brand-accent flex items-center justify-center transition-all duration-300">
-              <Phone size={20} />
+          {/* @ts-ignore */}
+          {profile.phone && (
+            <div className="bg-white p-6 shadow-sm border border-gray-100 rounded-lg flex gap-4 items-start group">
+              <div className="w-11 h-11 rounded-full bg-[#f0f4f8] text-brand-accent flex items-center justify-center transition-all duration-300">
+                <Phone size={20} />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-[#374151] mb-1">Phone</h4>
+                {/* @ts-ignore */}
+                <p className="text-[#4b5563]">{profile.phone}</p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-lg font-bold text-[#374151] mb-1">Phone</h4>
-              <p className="text-[#4b5563]">{profile.phone}</p>
-            </div>
-          </div>
+          )}
 
           <div className="flex flex-wrap gap-4 items-center pt-4">
             {profile.socials.linkedin && (
@@ -77,7 +78,7 @@ export default function Contact() {
 
         <div className="h-full min-h-[400px] rounded-lg overflow-hidden shadow-md">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2522.9995!2d6.0617!3d50.778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0997f6c34277b%3A0x28042407519ba5e!2sAhornstra%C3%9Fe%2055%2C%2052074%20Aachen%2C%20Germany!5e0!3m2!1sen!2sde!4v1700000000000!5m2!1sen!2sde" 
+            src={profile.mapEmbedUrl} 
             className="w-full h-full transition-all duration-500"
             style={{ border: 0 }} 
             allowFullScreen 
