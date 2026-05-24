@@ -26,7 +26,7 @@ export const profile = {
   profileImage: "data/Image/Dhiraj_Sidebar.jpeg",
   sidebarImage: "data/Image/Dhiraj_Sidebar.jpeg",
   homeBackground: "data/Image/background.jpg",
-  tagline: "From sampling theory to graph neural networks.",
+  tagline: "From sampling theory to graph neural networks",
   bio: "Postdoctoral Researcher in the Computational Network Science group at RWTH Aachen University, specializing in mathematical sampling theory and graph-based machine learning.",
-  detailedBio: "I am a Postdoctoral Researcher in Prof. Michael T. Schaub’s Computational Network Science group at RWTH Aachen University. I completed my PhD in Mathematics at the Indian Institute of Technology Delhi in 2023 under Dr. Sivananthan Sampath.\n\nMy research bridges mathematical sampling theory and complex networks: for example, I study random sampling problems in reproducing-kernel function spaces and analyze graph-structured data. In particular, I have worked on theoretical aspects of graph-based learning.\n\nMy goal is to develop rigorous mathematical tools for analyzing complex network data. I am particularly interested in collaborations at the intersection of pure mathematics, applied statistics, and network analysis."
+  detailedBio: "I am a Postdoctoral Researcher in Prof. Michael T. Schaub’s Computational Network Science group at RWTH Aachen University. I completed my PhD in Mathematics at the Indian Institute of Technology Delhi in 2023 under Dr. Sivananthan Sampath.\n\nMy research bridges mathematical sampling theory and complex networks: for example, I study random sampling problems in reproducing-kernel function spaces and analyze graph-structured data. In particular, I have worked on theoretical aspects of graph-based learning.\n\nMy goal is to develop rigorous mathematical tools for analyzing complex network data. I am particularly interested in collaborations at the intersection of mathematics and network analysis."
 };
